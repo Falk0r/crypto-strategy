@@ -1,0 +1,14 @@
+<template>
+  <div>
+    <h1 class="font-bold text-teal-700">Home Page</h1>
+    <p>Count: {{ double }}</p>
+  </div>
+</template>
+
+<script setup lang="ts">
+const count = ref(1)
+const double = computed(() => count.value * 2)
+definePageMeta({
+  layout: "application",
+});
+</script>
