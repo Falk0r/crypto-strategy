@@ -2,7 +2,7 @@
   <div>
     <h1 class="font-bold text-teal-700">Home Page</h1>
     <p>Count: {{ double }}</p>
-    <p v-show="sayHello">{{ sayHello }}</p>
+    <p v-show="sayHello">{{ sayHello }}</p> 
   </div>
 </template>
 

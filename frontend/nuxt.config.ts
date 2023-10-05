@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  srcDir: "frontend/",
-  spaLoadingTemplate: "./spa-loading-template.html",
+  srcDir: "./",
+  spaLoadingTemplate: "spa-loading-template.html",
   modules: [
     [
       '@nuxtjs/i18n',
