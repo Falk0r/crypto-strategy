@@ -13,5 +13,6 @@ const {data: sayHello} = await useFetch('http://localhost:3500');
 
 definePageMeta({
   layout: "application",
+  name: "home",
 });
 </script>
