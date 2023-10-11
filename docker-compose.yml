@@ -12,6 +12,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      SECRET_HASH: ${SECRET_HASH}
   db:
     container_name: db
     image: mysql:8.0.31
@@ -21,10 +27,10 @@ services:
     volumes:
       - volume-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: develop
-      MYSQL_USER: develop
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     healthcheck:
       test: "exit 0"
   phpmyadmin:
@@ -36,9 +42,9 @@ services:
     ports: 
     - "8082:80"
     environment: 
-        - PMA_USER=develop
-        - PMA_PASSWORD=password
-        - UPLOAD_LIMIT=300M
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+      UPLOAD_LIMIT: 300M
   frontend:
     container_name: frontend
     build: ./docker/nuxt/.
