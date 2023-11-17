@@ -5,10 +5,12 @@
       {{ user.firstName }} : {{ user.email }}
     </div>
   </div>
+  <button @click="handleSignOut">disconnect</button>
 </template>
 
 <script setup lang="ts">
 definePageMeta({middleware: "auth"});
+const {signOut} = useAuth();
 
 interface User {
   id: number;
@@ -17,4 +19,9 @@ interface User {
 }
 
 const {data: users} = await useApiFetch<User[]>("users");
+
+const handleSignOut = (event: MouseEvent) => {
+  event.preventDefault();
+  signOut();
+};
 </script>

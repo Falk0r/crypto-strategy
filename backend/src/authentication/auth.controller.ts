@@ -25,6 +25,13 @@ export class AuthController {
 
   @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
+  @Post('logout')
+  async logOut() {
+    return { status: 'disconnect' };
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Get('session')
   async getSession() {
     return { status: 'authenticated!' };
